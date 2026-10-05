@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coromandel Topo Explorer</title>
+<meta name="theme-color" content="#2f6b3a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="panel">
+    <header>
+      <h1>Coromandel <span>Topo Explorer</span></h1>
+      <button id="collapse" aria-label="Toggle panel">&#9776;</button>
+    </header>
+    <nav id="tabs">
+      <button data-tab="regions" class="active">Regions</button>
+      <button data-tab="explore">Explore</button>
+      <button data-tab="trip">Trip <span id="tripCount">0</span></button>
+      <button data-tab="legend">Legend</button>
+    </nav>
+
+    <section id="tab-regions" class="tab active">
+      <button id="viewAll" class="ghost">Show whole peninsula</button>
+      <ul id="regionList"></ul>
+    </section>
+
+    <section id="tab-explore" class="tab">
+      <div id="regionHead"></div>
+      <div id="status"></div>
+      <div id="filters"></div>
+      <input id="search" type="search" placeholder="Search peaks, streams, tracks...">
+      <ul id="results"></ul>
+    </section>
+
+    <section id="tab-trip" class="tab">
+      <p class="hint">Tap <b>+ Trip</b> on any place to build a route. Distances are straight-line between stops.</p>
+      <ol id="tripList"></ol>
+      <div id="tripSummary"></div>
+      <div class="row">
+        <button id="gpx">Export GPX</button>
+        <button id="clearTrip" class="ghost">Clear</button>
+      </div>
+    </section>
+
+    <section id="tab-legend" class="tab">
+      <div id="legendBox"></div>
+      <details>
+        <summary>Official LINZ Topo50 layer (optional)</summary>
+        <p class="hint">Get a free key at <a href="https://basemaps.linz.govt.nz" target="_blank" rel="noopener">basemaps.linz.govt.nz</a> and paste it here to enable NZ Topo50 tiles.</p>
+        <input id="linzKey" placeholder="LINZ Basemaps API key">
+        <button id="saveKey">Save key</button>
+      </details>
+    </section>
+  </aside>
+  <main id="map"></main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data/regions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
